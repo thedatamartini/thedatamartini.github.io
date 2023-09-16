@@ -4,4 +4,4 @@ title: Posts
 permalink: /posts/
 ---
 
-Welcome to the Data Martini!
+All Posts from the Data Martini!
