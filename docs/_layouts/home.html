@@ -1,0 +1,85 @@
+---
+layout: default
+---
+
+<div class="home">
+  {%- if page.title -%}
+    <h1 class="page-heading">{{ page.title }}</h1>
+  {%- endif -%}
+
+  <div class="carousel" id="myTopnav">
+    <div class="slide" id="slide1">
+        <img class="desktop" src="/media/synapse_carousel.png" alt="Synapse">
+        <img class="mobile" src="/media/synapse_carousel_mobile.png" alt="Synapse">
+        <content>
+            <h3>Python Wheels</h3>
+            <p class="desktop">Package Python functions into a wheel<br>
+                and install on your Apache Spark pools<br>
+                in Azure Synapse Analytics
+            </p>
+            <p class="mobile" style="margin-right: 15px">Package Python functions into a wheel
+                and install on your Apache Spark pools
+                in Azure Synapse Analytics
+            </p>
+            <button href="/synapse/2023/09/03/python-wheel-packages.html">Learn More</button>
+        </content>
+    </div>
+    <div class="slide" id="slide2">
+        <img class="desktop" src="/media/pbi_carousel.png" alt="Power BI">
+        <img class="mobile" src="/media/pbi_carousel_mobile.png" alt="Power BI">
+        <content>
+            <h3>Dynamic Date Axis</h3>
+            <p class="desktop">Create a date axis with dynamic<br>
+                granularity based on the overall date<br>
+                range selected in a Power BI Report
+            </p>
+            <p class="mobile" style="margin-right: 15px">Create a date axis with dynamic
+                granularity based on the overall date
+                range selected in a Power BI Report
+            </p>
+            <button href="/powerbi/2023/09/03/dynamic-date-axis.html">Learn More</button>
+        </content>
+    </div>
+</div>
+
+<div class="controls">
+    <button class="pause_button" id="pauseBtn" onclick="pauseSlides()">
+        <i class="fa fa-pause-circle-o"></i>
+    </button>
+    <button class="play_button" id="playBtn" onclick="playSlides()">
+        <i class="fa fa-play-circle-o"></i>
+    </button>
+    <button class="prev_button" id="prevBtn">
+        <i class="fa fa-angle-left"></i>
+    </button>
+    <div class="indicators"></div>
+    <button class="next_button" id="nextBtn">
+        <i class="fa fa-angle-right"></i>
+    </button>
+</div>
+
+  {{ content }}
+
+  {%- if site.posts.size > 0 -%}
+    <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
+    <ul class="post-list">
+      {%- for post in site.posts -%}
+      <li>
+        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+        <span class="post-meta">{{ post.date | date: date_format }}</span>
+        <h3>
+          <a class="post-link" href="{{ post.url | relative_url }}">
+            {{ post.title | escape }}
+          </a>
+        </h3>
+        {%- if site.show_excerpts -%}
+          {{ post.excerpt }}
+        {%- endif -%}
+      </li>
+      {%- endfor -%}
+    </ul>
+
+    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
+  {%- endif -%}
+
+</div>
